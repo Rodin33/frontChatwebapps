@@ -1,0 +1,62 @@
+
+<div class="spinn-container" *ngIf="isLoading">
+  <div class="containe-spinn">
+    <span  class="spinner"></span>
+  </div>
+</div>
+
+<div class="login-container">
+  <div class="form-header">
+    <h2>{{ isLogin ? 'Connexion' : 'Inscription' }}</h2>
+  </div>
+
+
+  <form [formGroup]="formMessage" class="form">
+
+    <div class="input-group">
+      <input
+        formControlName="email"
+        type="email"
+        placeholder="Email"
+        required
+      />
+    </div>
+    <div class="input-group" *ngIf="!isLogin">
+      <input
+        formControlName="firstName"
+        type="text"
+        placeholder="Prénom"
+        required
+      />
+    </div>
+    <div class="input-group">
+      <input
+        formControlName="password"
+        type="password"
+        placeholder="Mot de passe"
+        required
+      />
+    </div>
+
+    <button
+      type="button"
+      (click)="isLogin ? login() : register()"
+      class="btn"
+      [disabled]="isLoading"
+    >
+      <span >
+        {{ isLogin ? 'Se connecter' : "S'inscrire" }}
+      </span>
+    </button>
+  </form>
+
+
+  <p class="toggle-mode">
+    {{ isLogin ? "Pas encore de compte ?" : "Déjà inscrit ?" }}
+    <a (click)="toggleMode()">
+      {{ isLogin ? "Inscrivez-vous" : "Connectez-vous" }}
+    </a>
+  </p>
+
+  <p class="message">{{ message }}</p>
+</div>

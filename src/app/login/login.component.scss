@@ -1,0 +1,144 @@
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 10vh;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #f9f9f9, #eef2f3);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+
+
+
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  .form {
+    .input-group {
+      margin-bottom: 20px;
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        font-size: 14px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+
+        &:focus {
+          border-color: #007bff;
+          box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+          outline: none;
+        }
+
+        &::placeholder {
+          color: #aaa;
+          font-style: italic;
+        }
+      }
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: #007bff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+
+      &:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .toggle-mode {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+
+    a {
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: underline;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .message {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #ff4c4c;
+    font-weight: 500;
+  }
+}
+
+.spinn-container{
+  width: 100%;
+  position: absolute;
+  height: 50vh;
+  display: flex;
+  justify-content:center;
+  text-align: center;
+  align-items: center;
+  z-index: 8000;
+  .containe-spinn{
+    width: 250px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .spinner {
+      width: 30px;
+      height: 30px;
+      border: 3px solid transparent;
+      border-top: 3px solid #979696;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      background: rgb(255, 255, 255);
+      padding: 5px;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

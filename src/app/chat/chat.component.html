@@ -1,0 +1,64 @@
+<div class="chat-container">
+  <header class="chat-header">
+    <div class="chat-header-title">
+      <h4><i class="bi bi-chat-dots"></i> ChatBox - Groupe</h4>
+    </div>
+
+    <div class="chat-header-user">
+      <span class="user-info">
+        <i class="bi bi-person-circle"></i> {{ userInfo?.firstName }}
+      </span>
+      <button class="logout-btn" (click)="logout()">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="chat-body" #messageContainer>
+    <div
+      *ngFor="let message of messages"
+      class="message"
+      [ngClass]="{
+        'sent': message.userId === usercurrentId,
+        'received': message.userId !== usercurrentId,
+        'new': isNewMessage(message)
+      }">
+      <div class="message-meta">
+        <span class="username" *ngIf="message.userId !== usercurrentId">
+          <i style="position: absolute; margin-top: .8px;" class="bi bi-person-circle"></i>
+          <span style="font-weight: bold; padding-left: 15px;">{{ message.firstName }}</span>
+        </span>
+        <span class="timestamp">{{ formatMessageTimestamp(message.timestamp) }}</span>
+      </div>
+      <div class="message-content">{{ message.content }}</div>
+    </div>
+  </div>
+
+  <footer class="chat-footer">
+    <input
+      [(ngModel)]="newMessage"
+      type="text"
+      placeholder="Écrire un message"
+      (keyup.enter)="sendMessage()" />
+    <button
+      (click)="sendMessage()"
+      [disabled]="!newMessage || newMessage.trim() === ''">
+      Envoyer
+    </button>
+  </footer>
+
+
+  <!-- Modal de déconnexion -->
+  <div class="logout-modal" *ngIf="showLogoutModal">
+    <div class="modal-overlay" (click)="closeLogoutModal()"></div>
+    <div class="modal-content">
+      <h4>Déconnexion</h4>
+      <p>Voulez-vous vraiment vous déconnecter ?</p>
+      <div class="modal-actions">
+        <button class="confirm-btn" (click)="confirmLogout()">Oui</button>
+        <button class="cancel-btn" (click)="closeLogoutModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
